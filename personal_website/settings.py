@@ -12,12 +12,15 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 from pathlib import Path
 
+# For catenating the base dir with the apps folder, which goes out of base django search patterns
+import sys
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Static files(HTML, JS, CSS, Assets)
-STATIC_URL = 'static/'
-
+# Enables searching for apps specified in the aformentioned dir
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
@@ -40,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home.apps.HomeConfig',
+    'blog.apps.BlogConfig',
     'tinymce',
     'bootstrap5',
 ]
@@ -59,7 +64,7 @@ ROOT_URLCONF = 'personal_website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,11 +90,14 @@ WSGI_APPLICATION = 'personal_website.wsgi.application'
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'OPTIONS': {
+                'service': 'test',
+                'passfile': '.pgpass'
+                }
+            }
+        }
 
 
 # Password validation
