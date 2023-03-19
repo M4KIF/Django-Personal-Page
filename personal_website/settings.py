@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home.apps.HomeConfig',
+    'common.apps.CommonConfig',
     'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
     'tinymce',
     'bootstrap5',
 ]
