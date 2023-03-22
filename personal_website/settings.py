@@ -19,6 +19,9 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media'
+
 # Enables searching for apps specified in the aformentioned dir
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
@@ -43,9 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'common.apps.CommonConfig',
+    #'common.apps.HomeConfig',
     #'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
+    'media.apps.MediaConfig',
     #'authentification.apps.AuthentificationConfig',
     'tinymce',
     'bootstrap5',
@@ -81,8 +85,6 @@ TEMPLATES = [
 
 STATICFILES_DIRS = [
     BASE_DIR / "static", 
-    BASE_DIR / "apps/home",
-    BASE_DIR / "apps/blog",
 ]
 
 WSGI_APPLICATION = 'personal_website.wsgi.application'
@@ -97,9 +99,7 @@ DATABASES = {
             'OPTIONS': {
                 'service': 'test',
                 'passfile': '.pgpass'
-                }
-            }
-        }
+                } } }
 
 
 # Password validation
