@@ -46,13 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'common.apps.HomeConfig',
-    #'blog.apps.BlogConfig',
-    'users.apps.UsersConfig',
-    'media.apps.MediaConfig',
-    #'authentification.apps.AuthentificationConfig',
-    'tinymce',
-    'bootstrap5',
+    'apps.utilities.apps.UtilitiesConfig',
+    'apps.home.apps.HomeConfig',
+    #'tinymce',
+    #'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -99,7 +96,9 @@ DATABASES = {
             'OPTIONS': {
                 'service': 'test',
                 'passfile': '.pgpass'
-                } } }
+                }
+            }
+        }
 
 
 # Password validation
