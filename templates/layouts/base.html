@@ -1,4 +1,5 @@
 {% load bootstrap5 %}
+{% load static %}
 
 
 
@@ -9,17 +10,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Personal-Website</title>
+        {% block style %}{% endblock %}
         <!-- Google fonts-->
     </head>
 
     <body>
-        {% block nav %}
+            {% block nav %}
             {% include 'includes/navbar.html' %}
-        {% endblock %}
-        {% block content %}{% endblock %}
-        {% block footer %}
+            {% endblock %}
+
+            {% block content %}{% endblock %}
+
+            {% block footer %}
             {% include 'includes/footer.html' %}
-        {% endblock %}
+            {% endblock %}
     </body>
 
 </html>
